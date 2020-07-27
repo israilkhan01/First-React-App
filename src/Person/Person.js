@@ -1,14 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-const person=(props)=>{
-return ( 
-      <div>
-          <p onClick={props.click}>I am a person who is Building this App and I am {props.name} and  {props.Age} year old
-          </p>
-        <p>{props.class}</p>
-        <input type="text" onChange={props.change}/>
-      </div>
-    )
-};
+const person = (props) => {
+return <div>
+    <p onClick={props.click} > I am a {props.name} and I am {props.age}</p>
+        <span>{props.children}</span>
+</div>
+}
 
 export default person;
