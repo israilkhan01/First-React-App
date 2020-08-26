@@ -1,8 +1,21 @@
 import React from 'react';
-// import logo from './logo.svg';
+import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person'
 
+
+const StyledButton = styled.button`
+  background-color: ${props=>props.alt ? 'yellow' : 'lightgreen'};
+  font: inherit;
+  border: 1px solid blue;
+  margin-bottom: 20px;
+  padding: 8px;
+  cursor: pointer;
+
+  &:hover{
+    background-color: ${props=>props.alt ? 'lightgreen' : 'yellow'};
+  }
+  `;
 class App extends React.Component{
   state={
     persons:[
@@ -41,14 +54,17 @@ class App extends React.Component{
     console.log(personIndex)
  }
   render(){
-    const style={
-      backgroundColor:'lightgreen',
-      font:'inherit',
-      border:'1px solid blue',
-      marginBottom:'20px',
-      padding:'8px',
-      cursor:'pointer',
-    }
+    // const style={
+    //   backgroundColor:'lightgreen',
+    //   font:'inherit',
+    //   border:'1px solid blue',
+    //   marginBottom:'20px',
+    //   padding:'8px',
+    //   cursor:'pointer',
+    //   ':hover':{
+    //     backgroundColor:'yellow'
+    //   }
+    // }
     let persons = null;
     if(this.state.showPersons){ 
       persons = (
@@ -65,7 +81,7 @@ class App extends React.Component{
        
       </div> 
       );
-      style.backgroundColor='red'
+    
     }
     // let classes=['red','bold'].join(' ');
     const classes=[];
@@ -76,16 +92,15 @@ class App extends React.Component{
       classes.push('bold');
     }
     return (
-      <div className="App">
+     <div className="App">
 
-        <h1>Hey There</h1>
-        <p className={classes.join(' ')}>This is really working</p>
+      <h1>Hey There</h1>
+      <p className={classes.join(' ')}>This is really working</p>
 
-        <button
-         style={style} onClick={this.togglePersonsHandler} 
-         >Switch Name</button>
-         {persons}
-        </div>
+      <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}> Switch Name </StyledButton>
+        {persons}
+
+     </div>
     )
   }
 }
